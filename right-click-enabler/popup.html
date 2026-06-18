@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>右クリック有効化</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 260px;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+
+    .header {
+      padding: 16px 16px 12px;
+      background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+      border-bottom: 1px solid #2a2a4a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-icon {
+      width: 32px;
+      height: 32px;
+      background: #e94560;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .header-text p {
+      font-size: 10px;
+      color: #8892b0;
+      margin-top: 2px;
+    }
+
+    .content {
+      padding: 16px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #16213e;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .toggle-label {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .toggle-label span:first-child {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ccd6f6;
+    }
+
+    .toggle-label span:last-child {
+      font-size: 11px;
+      color: #8892b0;
+    }
+
+    /* Toggle switch */
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #2a2a4a;
+      border-radius: 26px;
+      transition: background 0.25s;
+    }
+
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 4px;
+      top: 4px;
+      background: #8892b0;
+      border-radius: 50%;
+      transition: transform 0.25s, background 0.25s;
+    }
+
+    input:checked + .slider {
+      background: #e94560;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(22px);
+      background: #fff;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      width: 100%;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .status-badge.on {
+      background: rgba(233, 69, 96, 0.15);
+      color: #e94560;
+      border: 1px solid rgba(233, 69, 96, 0.3);
+    }
+
+    .status-badge.off {
+      background: rgba(136, 146, 176, 0.1);
+      color: #8892b0;
+      border: 1px solid rgba(136, 146, 176, 0.2);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .footer {
+      padding: 10px 16px;
+      border-top: 1px solid #2a2a4a;
+      font-size: 10px;
+      color: #4a4a6a;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-icon">🖱️</div>
+    <div class="header-text">
+      <h1>右クリック有効化</h1>
+      <p>右クリック制限を解除します</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="toggle-row">
+      <div class="toggle-label">
+        <span>右クリックを有効化</span>
+        <span>このページに適用</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleEnabled" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="status-badge off" id="statusBadge">
+      <span class="dot"></span>
+      <span id="statusText">無効</span>
+    </div>
+  </div>
+
+  <div class="footer">全サイトのデフォルト設定はストレージに保存されます</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
