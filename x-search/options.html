@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>検索先の設定 — 選択テキストで検索</title>
+    <link rel="stylesheet" href="options.css">
+    <script type="module" src="options.js"></script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">選択テキストで検索</p>
+      <h1>選んだ言葉から、すぐ検索。</h1>
+      <p class="intro">使うサイトをオンにすると、検索バーと右クリックメニューに表示されます。</p>
+      <form id="settings-form">
+        <fieldset id="site-settings" disabled>
+          <legend>検索の設定</legend>
+          <label class="site toolbar-setting">
+            <input type="checkbox" id="toolbar-enabled">
+            <span>
+              <strong>文字選択時に検索バーを表示する</strong>
+              <small>選択した文字の近くから、1クリックで検索。オフでも右クリック検索は使えます。</small>
+            </span>
+          </label>
+          <h2>表示する検索先</h2>
+          <div id="sites"></div>
+          <div class="footer">
+            <button type="button" id="enable-all">すべてオンにする</button>
+            <p id="selection-count"></p>
+          </div>
+        </fieldset>
+      </form>
+      <p id="status" role="status" aria-live="polite">設定を読み込んでいます…</p>
+      <section class="ai-settings" aria-labelledby="ai-heading">
+        <h2 id="ai-heading">JevのAIおすすめ <span class="optional">任意</span></h2>
+        <p class="ai-description">選んだ言葉に合う「価格を比べる」「レビューを見る」などの目的を最大2個提案し、検索先も光る印でお知らせします。「専門サイトを探す」では専門サイト集から最大3件を提案します（Googleをオンにすると使えます）。検索語候補は先にブラウザ内で抽出します。2,000文字を超える選択も先頭20,000文字までローカルで候補を作れます。候補を選ぶだけでは検索せず、目的やサイトを押すと検索します。目的を押すと、選択した文字に「レビュー」などを加えて検索します。</p>
+        <fieldset id="ai-settings" disabled>
+          <legend class="sr-only">AIおすすめの設定</legend>
+          <label class="site">
+            <input type="checkbox" id="ai-enabled">
+            <span><strong>AIおすすめをオンにする</strong><small>オンの間は、文字を選ぶと選択した文字（最大2,000文字）をTypeSafeへ送信します。JevのAPI利用料金がかかります。</small></span>
+          </label>
+          <label class="site">
+            <input type="checkbox" id="ai-context">
+            <span><strong>周辺の文章も判定に使う</strong><small>選択箇所の前後最大120文字ずつを追加で送信します。ページのURL・タイトル・全文は送りません。</small></span>
+          </label>
+          <div class="ai-connection">
+            <label for="ai-key">TypeSafeのAPIキー</label>
+            <input type="password" id="ai-key" autocomplete="off" spellcheck="false" placeholder="APIキーを入力">
+            <p id="ai-key-state" class="ai-description"></p>
+            <p class="ai-description">キーはこのブラウザ内に保存します。接続確認では、固定のサンプル文を1回判定します。</p>
+            <div class="ai-actions">
+              <button type="button" id="ai-connect">接続を確認して保存・オンにする</button>
+              <button type="button" id="ai-delete">キーを削除</button>
+              <a href="https://console.typesafe.ai/home" target="_blank" rel="noreferrer">TypeSafeを開く ↗</a>
+            </div>
+          </div>
+        </fieldset>
+        <p id="ai-status" role="status" aria-live="polite">AI設定を読み込んでいます…</p>
+      </section>
+      <aside>
+        <h2>使い方</h2>
+        <p>文字を選択するとアイコンの検索バーが表示されます。マウスを重ねるとサイト名を確認でき、クリックすると新しいタブで検索できます。Escキー・×ボタン・スクロールで閉じられます。</p>
+        <p>ページ上の言葉を選択 → 右クリック →「選択テキストで検索」からサイトを選択。検索結果が新しいタブで開きます。</p>
+        <p>設定はこのブラウザに自動保存されます。拡張機能のアイコンから、いつでもこの画面を開けます。</p>
+        <p>検索バーは通常のWebページで使えます。Chromeの設定画面などや、入力欄・編集中の文章では表示されません。</p>
+      </aside>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "selection-search",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:browser": "node scripts/browser-check.mjs"
+  }
+}

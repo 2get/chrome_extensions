@@ -1,0 +1,61 @@
+:root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #202b3d; background: #f5f7fb; }
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.7; }
+main { max-width: 720px; margin: 56px auto; padding: 0 24px; }
+.eyebrow { color: #4263b5; font-weight: 700; font-size: 13px; letter-spacing: .08em; }
+h1 { font-size: clamp(24px, 4vw, 30px); line-height: 1.45; margin: 12px 0; }
+.intro { color: #596579; margin: 0 0 28px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { padding: 0; margin-bottom: 12px; font-weight: 700; }
+#sites { border: 1px solid #dbe1ed; border-radius: 14px; background: #fff; overflow: hidden; }
+.toolbar-setting { border: 1px solid #dbe1ed; border-radius: 14px; background: #fff; margin-bottom: 24px; }
+.site { display: flex; align-items: center; gap: 16px; padding: 16px 20px; cursor: pointer; }
+.site + .site { border-top: 1px solid #e8ecf3; }
+.site:hover { background: #f4f7ff; }
+.site input { width: 20px; height: 20px; margin: 0; flex-shrink: 0; accent-color: #4169cc; cursor: pointer; }
+.site strong, .site small { display: block; }
+.site strong { font-size: 16px; }
+.site small { font-size: 13px; color: #657086; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
+button { font: inherit; font-size: 13px; color: #3458ac; background: #fff; border: 1px solid #cbd5e8; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+button:hover { background: #edf2ff; }
+:focus-visible { outline: 3px solid #7397ef; outline-offset: 4px; }
+button:disabled { opacity: .6; cursor: wait; }
+#selection-count { font-size: 13px; color: #657086; margin: 0; }
+#status { min-height: 24px; font-size: 13px; color: #346750; margin: 12px 0 24px; }
+#status.error { color: #b32c3d; }
+.ai-settings { border: 1px solid #dbe1ed; border-radius: 14px; background: #fff; padding: 20px; margin: 0 0 28px; }
+.ai-settings > h2 { font-size: 17px; }
+.ai-description { color: #657086; font-size: 13px; margin: 8px 0; }
+.ai-settings .site { padding: 16px 0; align-items: flex-start; }
+.ai-settings .site input { margin-top: 4px; }
+.optional { font-size: 11px; color: #657086; border: 1px solid #dbe1ed; border-radius: 12px; padding: 2px 7px; margin-left: 6px; }
+.ai-connection { border-top: 1px solid #e8ecf3; padding-top: 16px; }
+.ai-connection > label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+#ai-key { width: 100%; border: 1px solid #cbd5e8; border-radius: 8px; padding: 10px 12px; font: inherit; color: inherit; background: transparent; }
+.ai-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.ai-actions a { font-size: 13px; color: #3458ac; }
+#ai-status { font-size: 13px; color: #346750; margin: 14px 0 0; }
+#ai-status.error { color: #b32c3d; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+aside { border-top: 1px solid #dbe1ed; padding-top: 20px; color: #657086; font-size: 13px; }
+h2 { margin: 0 0 8px; color: #3d4a60; font-size: 14px; }
+aside p { margin: 6px 0; }
+@media (max-width: 480px) { main { margin: 28px auto; padding: 0 16px; } .site { padding: 14px 16px; } }
+@media (prefers-color-scheme: dark) {
+  :root { color: #e6ebf5; background: #171d29; }
+  .eyebrow, button { color: #abc2ff; }
+  .intro, .site small, #selection-count, aside { color: #abb7cc; }
+  #sites, button, .toolbar-setting { background: #222b3b; border-color: #3c4960; }
+  .site + .site, aside { border-color: #3c4960; }
+  .site:hover, button:hover { background: #2c3850; }
+  h2 { color: #d4def0; }
+  #status { color: #94d6b3; }
+  #status.error { color: #ffabb4; }
+  .ai-settings { background: #222b3b; border-color: #3c4960; }
+  .ai-description, .optional { color: #abb7cc; }
+  .ai-connection, .optional, #ai-key { border-color: #495772; }
+  .ai-actions a { color: #abc2ff; }
+  #ai-status { color: #94d6b3; }
+  #ai-status.error { color: #ffabb4; }
+}

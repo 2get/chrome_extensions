@@ -1,12 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "Xで検索",
-  "version": "1.0.0",
-  "description": "選択したテキストをXで検索します",
-  "permissions": ["contextMenus"],
+  "name": "選択テキストで検索",
+  "version": "1.9.1",
+  "description": "選択したテキストを検索バーや右クリックからGoogleなど8サイトで検索。任意でJevのAIおすすめも使えます。",
+  "permissions": ["contextMenus", "storage"],
+  "optional_host_permissions": ["https://api.typesafe.ai/*"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
+  "action": {
+    "default_title": "検索先の設定"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["selection-toolbar.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
